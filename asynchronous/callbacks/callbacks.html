@@ -1,0 +1,67 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+
+    <script>
+
+        //Your own function with a callback
+        function gettingStarted(callback) {
+            console.log("I am done now, do the callback!");
+
+            callback();
+        }
+
+        //A prewritten callback
+        function aCallback() {
+            console.log("Now it's my turn!");
+        }
+
+        //Specifying a callback in a function
+        setInterval(
+            () => { //callback function using arrow notation
+                console.log("I'm doing it again...");
+            },
+            2000); //how long between callbacks
+
+        //Another example with two callbacks
+        function attendLectureCallback(callback, errorCallback) {
+            let studentNotCome = false;
+            let studentNotListen = false;
+
+            if (studentNotCome) {
+                errorCallback({
+                    name: 'Student did not show up in class ',
+                    message: ':('
+                });
+            } else if (studentNotListen) {
+                errorCallback({
+                    name: 'Student did not listen ',
+                    message: ':('
+                });
+            } else {
+                callback('Thumbs up and keep it up!');
+            }
+        }
+
+        //message and error get passed into the callbacks
+        attendLectureCallback(message => { 
+            console.log(message)
+        }, error => {
+            console.log(error.name + ' ' + error.message)
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <button onclick="gettingStarted(aCallback);">Execute Callback</button>
+
+</body>
+
+</html>

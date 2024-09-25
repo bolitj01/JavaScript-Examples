@@ -1,0 +1,78 @@
+<!--
+
+signup4.html
+
+A form with client-side validation demonstrating "this" keyword.
+
+Refer to the following class:
+David J. Malan
+Computer Science S-75
+Harvard Summer School
+
+Modified by PFW
+-->
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script>			
+			function validate(f)
+			{
+				if (f.name.value === "")
+				{
+					alert("You must provide a user name!");
+					return false;
+				}
+				else if (f.email.value === "")
+				{
+					alert("You must provide a user email!");
+					return false;
+				}
+				else if (f.password1.value === "")
+				{
+					alert("You must provide a password!");
+					return false;					
+				}
+				else if (f.password1.value !== f.password2.value)
+				{
+					alert("You must provide the same password twice!");
+					return false;
+				}
+				else if (!f.agreement.checked)
+				{
+					alert("You must agree to our terms and conditions!");
+					return false;
+				}
+				return true;
+			}
+		</script>
+
+		<title>Sign Up</title>
+	</head>
+
+	<body>
+		<div style="text-align:center">
+			<h1>Sign Up</h1>
+			<h2>It's free and always will be.</h2>
+			<form action="" id="signup" method="POST" onsubmit="return validate(this);">
+				Name: <input name="name" type="text">
+				<br><br>
+				Email: <input name="email" type="text">
+				<br><br>
+				Password: <input name="password1" type="password"> <br><br>
+				Password (again): <input name="password2" type="password"> <br><br>
+				<input name="gender" type="radio" value="F">Female <input name="gender" type="radio" value="M">Male
+				<br><br>
+				<select name="year">
+					<option>1975</option>
+					<option>2000</option>
+					<option>2010</option>
+				</select>
+				<br><br>
+				I agree to the terms and conditions: <input name="agreement" type="checkbox"><br><br>
+				<input type="submit" value="Sign Up">
+			</form>
+		</div>
+	</body>
+</html>

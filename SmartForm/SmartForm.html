@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- This example is from book "Dynamic Web Programming and HTML5" by Paul Wang -->
+
+<html>
+    <head> 
+        <meta charset="utf-8"/>
+        <title>A Smart Form</title>
+        <script type="text/javascript" src="smartform.js"></script>
+        <link rel="stylesheet" href="smartform.css" />
+    </head>
+    
+    <body style="margin: 50px" onload="init()">
+        <section>
+            <h1>A Smart Form</h1>
+            <p>Pick a country outside of North-America, and see what happens.</p>
+            <p style="font-weight: bold; font-size: larger">Join superclub.com</p>
+            
+            <form id="sf" autocomplete="on" method="post" action=""> 
+                <div>
+                    <label>Full Name: </label>
+                    <input required="" onfocus="highlight(this)" onblur="normal(this)"
+                        name="fullname" size="20" />
+                </div>
+
+                <div>
+                    <label>Country: </label>
+                    <select  required="" id="country" name="country" size="1" 
+                        onfocus="highlight(this);" onchange="countryCode(this);" onblur="normal(this);">
+                        <option value="US" selected="">USA</option>
+                        <option value="CA">Canada</option>
+                        <option value="MX">Mexico</option>
+                        <option value="CN">China</option>
+                        <option value="RU">Russian Federation</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label>Telephone: </label>
+                    <input required="" id="phone" type="tel" size="20" 
+                        onfocus="highlight(this)" onblur="normal(this)" 
+                        name="phone" placeholder="###-###-####" 
+                        pattern="\d{3}-\d{3}-\d{4}" />
+                </div>
+                
+                <input id="sb" onfocus="highlight(this)" onblur="normal(this)"
+                        type="submit" value="Join Now" />
+            </form>
+        </section>
+    </body>
+</html>

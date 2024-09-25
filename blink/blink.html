@@ -1,0 +1,42 @@
+<!--
+
+blink.html
+
+Refer to the following class:
+David J. Malan
+Computer Science S-75
+Harvard Summer School
+
+Modified by PFW
+-->
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script>
+
+        function blinker()
+        {
+            const blinks = document.getElementsByTagName("h1");
+            for (let i = 0; i < blinks.length; i++)
+            {
+                if (blinks[i].style.visibility == "hidden")
+                    blinks[i].style.visibility = "visible";
+                else
+                    blinks[i].style.visibility = "hidden";
+            }
+        }
+
+        window.setInterval(blinker, 500);
+
+    </script>
+    <title></title>
+  </head>
+
+  <body>
+    <center>
+		  <h1>Hello, PFW</h1>
+    </center>
+  </body>
+</html>

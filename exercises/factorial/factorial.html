@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Finding Factorial</title>
+	<script>
+
+		
+		//5! = 5 * 4 * 3 * 2 * 1
+		function showFactorial()
+		{		
+			let resultVal = 1;
+			let factorial = Number(document.getElementById("num").value);
+			for (let i = factorial; i > 1; i--) {
+				resultVal *= i;
+			}
+			
+			document.querySelector("body").innerHTML += `<h2>${resultVal}</h2>`;
+		}
+
+		document.querySelector("input").addEventListener("click", showFactorial(event));
+		// document.querySelector("form").addEventListener("submit", () => {return false;});
+	</script>
+</head>
+
+<body>
+	<h1>Factorial Calculation</h1>
+	<form onsubmit="return false;" id="form" method="get">
+		Base number: <input id="num" type="text" name="based_num"><br><br>
+		<input type="submit" value="Submit" onclick="showFactorial()">
+	</form>
+
+	
+</body>
+
+</html>

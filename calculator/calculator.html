@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- This example is from book "Dynamic Web Programming and HTML5" by Paul Wang -->
+
+<html>
+	<head> 
+		<meta charset="utf-8"/>
+		<title>Calculator Session</title>
+		<script type="text/javascript" src="calculator.js"></script>
+		<style type="text/css">
+			div#session
+			{   font-weight: bold;
+			    color: blue;
+			}
+		</style>
+	</head>
+	
+	<body style="margin: 50px" onload="init()">
+		<section>
+			<h1>Calculator Session</h1>
+			
+			<p>
+				Simply type in a string such as <code>32 + 98 * 6</code> and click GO.
+			</p>
+		
+			<p>
+				<strong>COMPUTE : </strong>
+
+				<input id="uin" name="uin" maxlength="30" />
+				&#xA0;&#xA0;
+				<input value="GO" type="button" onclick="comp('uin')" />
+			</p>
+		
+			<p>
+				And the answers are:
+			</p>
+			
+			<output id="session" for="uin" style="display: block"> 
+			</output>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+form { 
+	margin-left: 3em; 
+}
+
+form > div {  
+	margin-bottom: 1em;  
+}
+
+form > div > label {  
+	background-color: #d2dbff; 
+	display: inline-block;
+	width: 10em;
+	text-align: right;
+	margin-right: 6px;
+	padding: 2px;
+	padding-right: 4px;
+	font-weight: bold;
+}
+
+form input, select, textarea {  
+	background-color: #eef;
+} 
+
+input#sb {  
+	margin-left: 6em;  
+}

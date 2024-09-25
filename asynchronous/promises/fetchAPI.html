@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <script defer src="fetch_promise.js"></script>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            width: 25vw;
+        }
+        button{
+            margin-top: 1rem;
+            height: 10vh;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Translate from RapidAPI</h1>
+
+    <label for="original">From English:</label><textarea name="" id="original" cols="30" rows="10"></textarea>
+    <label for="translation">To German:</label><textarea disabled name="" id="translation" cols="30" rows="10"></textarea>
+    <button id="translate">Translate!</button>
+    
+</body>
+</html>

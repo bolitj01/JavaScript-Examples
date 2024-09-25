@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mandelbrot Zoom Animation</title>
+</head>
+<body>
+  <canvas id="mandelbrotCanvas" width="800" height="800"></canvas>
+
+  <script>
+    const canvas = document.getElementById('mandelbrotCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    const width = canvas.width;
+    const height = canvas.height;
+    const maxIterations = 1000;
+    
+    let zoomFactor = 1.0;
+    const zoomSpeed = 0.02;
+    
+    function mandelbrot(c) {
+      let z = { real: 0, imaginary: 0 };
+      let n;
+      
+      for (n = 0; n < maxIterations; n++) {
+        const realSquared = z.real * z.real;
+        const imaginarySquared = z.imaginary * z.imaginary;
+        
+        if (realSquared + imaginarySquared > 4) {
+          return n;
+        }
+        
+        z.imaginary = 2 * z.real * z.imaginary + c.imaginary;
+        z.real = realSquared - imaginarySquared + c.real;
+      }
+      
+      return n;
+    }
+    
+    function drawMandelbrot() {
+      for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
+          const real = (x - width / 2) / (0.5 * zoomFactor * width);
+          const imaginary = (y - height / 2) / (0.5 * zoomFactor * height);
+          
+          const c = { real, imaginary };
+          const iteration = mandelbrot(c);
+          
+          const brightness = iteration / maxIterations * 255;
+          const color = `rgb(${brightness}, ${brightness}, ${brightness})`;
+          
+          ctx.fillStyle = color;
+          ctx.fillRect(x, y, 1, 1);
+        }
+      }
+    }
+    
+    function animateMandelbrotZoom() {
+      zoomFactor += zoomSpeed;
+      ctx.clearRect(0, 0, width, height);
+      drawMandelbrot();
+      requestAnimationFrame(animateMandelbrotZoom);
+    }
+    
+    animateMandelbrotZoom();
+  </script>
+</body>
+</html>

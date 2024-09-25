@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Tracker</title>
+
+    <style>
+        button {
+            background-color: brown;
+            color: white;
+            font-size: large;
+            margin: 3%;
+            padding: 2%;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+            background-color: whitesmoke;
+            color: burlywood;
+        }
+
+        td,
+        th {
+            width: 20%;
+        }
+
+        .crimelist {
+            font-size: smaller;
+            width: 60%;
+        }
+    </style>
+
+    <script defer src="criminal_create.js"></script>
+
+    <script>
+        
+        //Create criminal listing function here
+        function findCriminals (){
+            let table = document.getElementsByTagName("table")[0];
+
+            for (rec of pubRecs){
+                if(rec.crimes){
+                    table.innerHTML += rec.toString();
+                }
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <button onclick="findCriminals()">Find Criminals From Public Record</button>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th class="crimelist">Crimes</th>
+        </tr>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Refresh the page with text in the input to get a confirmation window</h3>
+    <label for="name">Name: </label><input type="text" name="" id="name">
+
+    <script>
+        
+        //Show a confirm dialog before leaving the page
+        function beforeUnloadListener(event) {
+            if (document.getElementById("name").value) {
+                event.preventDefault();
+                event.returnValue = "";
+            }
+        };
+        //Adding an event to the global window (this)
+        addEventListener("beforeunload", beforeUnloadListener);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!--
+
+adder2.html
+
+Enhance adder.html to add:
+(1) Use a textbox to show the result.
+(2) Support real number.
+
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Simple Adder</title>
+	</head>
+	<script>
+		
+		function calculate() {
+			let number1 = Number(num1.value);
+			let number2 = Number(num2.value);
+
+			result.value = number1 + number2;
+		}
+		
+	</script>
+	<body>
+		<form id="form" onsubmit="calculate(); return false;">
+			Number 1: <input type="text" id="num1"><br/><br/>
+			Number 2: <input type="text" id="num2"><br/><br/>
+			<input type="submit" value = "Add"><br/><br/>
+			Result: <input type="text" id="result"><br/><br/>
+		</form>	
+	</body>
+</html>

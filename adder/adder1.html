@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Simple Adder</title>
+	</head>
+	<script src="folderpath/filename.js"></script>
+	<script>
+	
+		document.querySelector("#form").onsubmit = function() {
+			calculate();
+		}
+
+		function calculate() {
+			let number1 = parseInt(num1.value);
+			let number2 = parseInt(num2.value);
+
+			alert(number1 + number2);
+		}
+		
+	</script>
+
+	<body>
+		<form id="form" onsubmit="calculate()">
+			Number 1: <input type="text" id="num1"><br><br>
+			Number 2: <input type="text" id="num2"><br><br>
+			<input type="submit" value = "Add"><br>
+		</form>	
+	</body>
+</html>

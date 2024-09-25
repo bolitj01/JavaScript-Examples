@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- This example is from book "Dynamic Web Programming and HTML5" by Paul Wang -->
+
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Better User Interface for Image Upload</title>
+	<style>
+		img.tm {
+			width: 100px;
+			height: 100px;
+			margin: 5px;
+		}
+
+		div#thumbnail {
+			border: thin black solid;
+			margin: 10px;
+			padding-left: 10px;
+			padding-right: 10px;
+			display: none
+		}
+	</style>
+	<script type="text/javascript" src="imageUpload.js">
+	</script>
+</head>
+
+<body style="margin: 50px">
+	<h1>Better User Interface for Image Upload</h1>
+	<form method="post" action="" enctype="multipart/form-data">
+		<pre>
+<label for="p">Your pictures:</label>  <input size="35" id="p" multiple type="file" required="" name="img[]" onchange="thumbnail(this.files)" accept="image/jpeg" />
+<div id="thumbnail"> </div>
+<input type="submit" name="submit" value="upload" />
+		</pre>
+	</form>
+</body>
+
+</html>

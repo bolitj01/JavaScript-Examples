@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<!-- This example is from "Dynamic Web Programming and HTML5" by Paul S. Wang -->
+
+<html>
+	<head>
+		<title> practice canvas </title>
+		<meta charset="utf-8" />
+		<style type="text/css">
+			canvas {
+				background:#000;
+				border:1px solid #000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="cv" width="400" height="200"></canvas><br />
+		<script>
+			var x = 40;
+			var y = 40;
+			var y_inc = 3;
+			var x_inc = 3;
+			var fill = "#ff0";
+
+			function draw(){
+				var cv = document.getElementById("cv");
+				var ctx = cv.getContext("2d");
+
+				ctx.fillStyle = fill;
+				ctx.beginPath();
+				ctx.arc(x, y, 40, 0, 2*Math.PI);
+				ctx.fill();	
+			}
+
+			function repaint(){
+				if(y > 160 || y < 40)
+				{
+					y_inc *= -1;	
+				}
+
+				y += y_inc;
+
+				if(x > 360 || x < 40)
+				{
+					x_inc *= -1;
+				}
+				x += x_inc;
+				cv.width = cv.width;
+				draw();
+
+				setTimeout(function(){ repaint(); }, 10);
+			}
+
+			repaint();
+		</script>
+	</body>
+</html>
