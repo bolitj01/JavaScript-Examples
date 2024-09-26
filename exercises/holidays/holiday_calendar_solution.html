@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Calendar</title>
+
+    <style>
+        button {
+            background-color: brown;
+            color: white;
+            font-size: large;
+            margin: 3%;
+            padding: 2%;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+            background-color: whitesmoke;
+            color: burlywood;
+        }
+
+        td,
+        th {
+            width: 20%;
+        }
+
+        .crimelist {
+            font-size: smaller;
+            width: 60%;
+        }
+    </style>
+
+    <script defer src="holiday_api.js"></script>
+
+    <script>
+        
+        //TODO Create showHoliday function
+        function showHolidays (){
+            const table = document.querySelector("table");
+
+            //Filter by date
+            const startDate = document.querySelector("#startDate").value;
+            const dateHolidays = holidays.filter(holiday => new Date(holiday.date) >= new Date(startDate.value));
+
+            //Populate table
+            for (const holiday of holidays){
+                table.innerHTML += holiday.toString();
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <label for="startDate">Start Date:</label>
+    <input type="date" name="" id="startDate">
+    <button onclick="showHolidays">Find Holidays</button>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+    </table>
+
+</body>
+
+</html>

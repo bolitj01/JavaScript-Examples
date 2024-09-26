@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crime Tracker</title>
+    <title>Holiday Calendar</title>
 
     <style>
         button {
@@ -34,35 +34,27 @@
         }
     </style>
 
-    <script defer src="criminal_create.js"></script>
+    <script defer src="holiday_api.js"></script>
 
     <script>
         
-        //Create criminal listing function here
-        function findCriminals (){
-            let table = document.getElementsByTagName("table")[0];
-
-            for (rec of pubRecs){
-                if(rec.crimes){
-                    table.innerHTML += rec.toString();
-                }
-            }
-
-        }
+        //TODO Create showHoliday function
+        
 
     </script>
 
 </head>
 
 <body>
-
-    <button onclick="findCriminals()">Find Criminals From Public Record</button>
+    <label for="startDate">Start Date:</label>
+    <input type="date" name="" id="startDate">
+    <button>Find Holidays</button>
 
     <table>
         <tr>
+            <th>Date</th>
             <th>Name</th>
-            <th>Location</th>
-            <th class="crimelist">Crimes</th>
+            <th>Type</th>
         </tr>
     </table>
 

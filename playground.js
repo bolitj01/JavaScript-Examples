@@ -3,4 +3,4 @@ let newLink = document.createElement('a');
 newLink.href = 'https://www.google.com';
 let newLinkText = document.createTextNode('New link to Google');
 newLink.appendChild(newLinkText);
-nav.children[1] = newLink;
+nav.appendChild(newLink);

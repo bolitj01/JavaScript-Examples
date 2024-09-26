@@ -22,7 +22,7 @@
  * 
  */
 
-var pubRecs = [];
+var holidays = [];
 
 names = ["Simone Villegas","Krystal Sandoval","Grayson Rosales,Keon Schultz","Maritza Conner","Brendan Houston","Patience Dillon","Leon Hubbard","Jillian Carpenter","Nicholas Golden","Rhianna Russo","Nico Burch","Leilani Beard","Aliana Doyle","Javion Mora","Armando Meyers","Sienna George","Peyton Acevedo","Angela Hammond","Nigel Foley","Daisy Perry","Caylee Moon","Andy Rasmussen","Emelia Ruiz","Mohammad Nash","Issac Rowe","Lola Guerra","Sanaa Mendoza","Marco Mcmillan","Giovani Glover","Joel Estrada","Beckett Campos","Hazel Barr","Adam Lambert","Messiah Orr","Kara Morrison","Kamron Rocha","April Bryant","Lyric Medina","Callum Peterson","Greyson Brennan","Taryn Elliott","Ana Montoya","Jordan Morton","Omari Waters","Melany Villegas","Zaniyah Daniels","Elias Levine","Trace Vance","Kaitlyn Vaughn","Aedan Shaw","Alexa Ross","Nathan Dougherty","Lina Carlson","Mylee Fox","Tyree Harris","Skylar Ware","Jake Fisher","Ariana West","Emily Duarte","Eduardo Weaver","Donald Francis","Yesenia Li","Alma Bentley","Kian Valenzuela","Emilio Mcclain","Eliezer Ritter","Hailey Hall","Dean Bean","Karley Sandoval","Daphne Goodwin","Marcel Ray","Kendal Ayers","Brian Daniel","Antwan Bernard","Destinee Frye","Stephanie Wong","Gordon Poole","Estrella Hendrix","Greta Nixon","Harley Massey","Ashly Merritt","Britney Glenn","Messiah Silva","Lydia Randolph","Faith Kidd","Joslyn Shah","Scott Watkins","Jonathan Black","Mohammad Wolfe","Moises Jackson","Emilia Leblanc","Britney Garcia","Adalynn Cox","Zaniyah Giles","Everett Clarke","Giovani Ingram","Karly Henson","Raegan Carter","Kadence Moss"];
 
@@ -61,7 +61,7 @@ for (let batch = 0; batch < 10; batch++){
 			let name = names.pop([Math.floor(Math.random() * names.length)]) + names.length + " from batch " + batch;
 			let location = locations.pop([Math.floor(Math.random() * locations.length)]);
 			var pr = new PublicRecord(name, location, Math.random() < .3 ? record.charges: null);
-			pubRecs.push(pr);
+			holidays.push(pr);
 		}
 	})
 	.catch(err => console.error(err));
