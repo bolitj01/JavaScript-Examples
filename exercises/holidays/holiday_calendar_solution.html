@@ -20,7 +20,7 @@
             width: 100%;
             table-layout: fixed;
             background-color: whitesmoke;
-            color: burlywood;
+            color: rgb(160, 103, 28);
         }
 
         td,
@@ -40,14 +40,14 @@
         
         //TODO Create showHoliday function
         function showHolidays (){
-            const table = document.querySelector("table");
+            const table = document.querySelector("tbody");
 
             //Filter by date
             const startDate = document.querySelector("#startDate").value;
-            const dateHolidays = holidays.filter(holiday => new Date(holiday.date) >= new Date(startDate.value));
+            const dateHolidays = holidays.filter(holiday => new Date(holiday.date) >= new Date(startDate));
 
             //Populate table
-            for (const holiday of holidays){
+            for (const holiday of dateHolidays){
                 table.innerHTML += holiday.toString();
             }
         }
@@ -59,7 +59,7 @@
 <body>
     <label for="startDate">Start Date:</label>
     <input type="date" name="" id="startDate">
-    <button onclick="showHolidays">Find Holidays</button>
+    <button onclick="showHolidays()">Find Holidays</button>
 
     <table>
         <tr>
