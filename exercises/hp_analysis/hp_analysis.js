@@ -1,42 +1,25 @@
 //Complete this script as an exercise for client-side File I/O and word data analysis.
 function readHP(event) {
-    let fr = new FileReader();
+  let fr = new FileReader();
 
-    let names = ["Harry", "Ron", "Hermione", "Dumbledore", "Hagrid"];
+  let characters = [
+    { name: "Harry", count: 0 },
+    { name: "Ron", count: 0 },
+    { name: "Hermione", count: 0 },
+    { name: "Hagrid", count: 0 },
+    { name: "Dumbledore", count: 0 },
+    { name: "Snape", count: 0 },
+    { name: "Voldemort", count: 0 },
+    { name: "Sirius", count: 0 },
+    { name: "Dobby", count: 0 },
+    { name: "Draco", count: 0 },
+  ];
 
-    names.sort((a, b) => {
-        return b.length - a.length;
-    });
+  fr.onload = () => {
+    
+  };
 
-    let characters = {};
+  let file = event.target.files[0];
 
-    fr.onload = () => {
-        let book = fr.result;
-        let words = book.split(" ");
-        words.forEach((word) => {
-            names.forEach((character) => {
-                if (word.includes(character)) {
-                    if (characters[character] === undefined) {
-                        characters[character] = 0;
-                    }
-                    else {
-                        characters[character] += 1;
-                    }
-                }
-            })
-        });
-        let table = document.querySelector("table");
-        //add the character key and value to table
-        for (let character in characters) {
-            let row = table.insertRow();
-            let name = row.insertCell();
-            let count = row.insertCell();
-            name.innerHTML = character;
-            count.innerHTML = characters[character];
-        }
-    }
-
-    let file = event.target.files[0];
-
-    fr.readAsText(file);
+  fr.readAsText(file);
 }

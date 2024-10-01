@@ -4,7 +4,11 @@ let board = ['', '', '', '', '', '', '', '', ''];
 const imgs = document.querySelectorAll("img");
 imgs.forEach(img => {
   img.addEventListener('dragstart', (event) => {
+    //Set current player data
     event.dataTransfer.setData('text/plain', currentPlayer);
+
+    //Hide the dragged image
+    event.target.style.opacity = '0.2';
     console.log(`dragstart - set data ${currentPlayer}`);
   });
 });
@@ -32,7 +36,9 @@ cells.forEach((cell, index) => {
       cell.style.backgroundImage = `url(${draggedPlayer}.png)`;
       board[index] = draggedPlayer;
       currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
-      document.querySelector("#player").src = `${currentPlayer}.png`; // Change the dragged image to the current player
+      const playerImg = document.querySelector("#player")
+      playerImg.src = `${currentPlayer}.png`; // Change the dragged image to the current player
+      playerImg.style.opacity = '1'; // Show the dragged image
       cell.style.backgroundColor = '';  // Reset background on dragleave
       checkWinner();
     }
