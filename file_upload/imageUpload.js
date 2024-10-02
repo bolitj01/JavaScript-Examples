@@ -1,6 +1,6 @@
 function thumbnail()
 { 
-    const files = document.querySelector(input[type="file"]).files;
+    const files = document.querySelector("input[type='file']").files;
     var tn = document.getElementById('thumbnail');
 
     //Clear any previous pictures

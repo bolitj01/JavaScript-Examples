@@ -1,68 +1,73 @@
 /**
  * Solution for in-class exercise.
  * Don't read until you try the exercise!
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  *
- * 
- * 
- * 
- * 
- * 
- *  
- * 
- * 
- * 
- * 
-*/
-function readHP() {
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+//Complete this script as an exercise for client-side File I/O and word data analysis.
+function readHP(event) {
+  let fr = new FileReader();
 
-    var fr = new FileReader();
-    fr.addEventListener("load", () => {
-        let mentions = [];
+  let characters = [
+    { name: "Harry", count: 0 },
+    { name: "Ron", count: 0 },
+    { name: "Hermione", count: 0 },
+    { name: "Hagrid", count: 0 },
+    { name: "Dumbledore", count: 0 },
+    { name: "Snape", count: 0 },
+    { name: "Voldemort", count: 0 },
+    { name: "Sirius", count: 0 },
+    { name: "Dobby", count: 0 },
+    { name: "Draco", count: 0 },
+  ];
 
-        for (let character of ["Harry", "Ron", "Hermione", "Dumbledore",
-        "Malfoy", "Hagrid", "Snape", "Voldemort"]) {
-            mentions.push({ name: character, count: 0 });
+  fr.onload = () => {
+    const book = fr.result;
+    const words = book.split(" ");
+
+    words.forEach((word) => {
+      characters.forEach((character) => {
+        if (word.includes(character.name)) {
+          character.count++;
         }
-
-        //Find occurrences
-        let words = fr.result.split(" ");
-
-        for (let word of words) {
-            let character = mentions.find(character => word.includes(character.name));
-            if (character) {
-                character.count++;
-            }
-        }
-
-        //Sort the count totals
-        mentions.sort((m1, m2) => m2.count - m1.count);
-
-        //Show occurrences in the table
-        let table = document.getElementById("hpWords")
-        for (character of mentions) {
-            table.innerHTML += 
-                `
-                <tr>
-                    <td>${character.name}</td>
-                    <td>${character.count}</td>
-                </tr>
-                `
-        }
-
+      });
     });
 
-    let file = document.getElementById("filechoose").files[0];
+    characters.sort((c1, c2) => c2.count - c1.count);
 
-    fr.readAsText(file);
+    const table = document.getElementById("hpWords");
+
+    characters.forEach((c) => {
+      table.innerHTML += `
+        <tr>
+            <td>${c.name}</td>
+            <td>${c.count}</td>
+        </tr>
+    `;
+    });
+  };
+
+  let file = event.target.files[0];
+
+  fr.readAsText(file);
 }
