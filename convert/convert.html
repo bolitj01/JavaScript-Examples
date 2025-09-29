@@ -5,7 +5,7 @@
 	<head> 
 		<meta charset="utf-8"/>
 		<title>Unit Conversion Demo</title>
-		<script type="text/javascript" src="convert.js"></script>
+		<script defer type="text/javascript" src="convert.js"></script>
 		<style type="text/css">
 			body {
 				margin: 50px;
@@ -13,11 +13,11 @@
 		</style>
 	</head>
 
-	<body onload="init()">
+	<body>
 		<section><h1>Inch-Centimeter Converter</h1>
 			<p>
 				<label>in <input id="in" type="number" size="10"  onfocus="reset()" /></label>  
-				<input type="button" value="Convert" onclick="convert()" />  
+				<input type="button" value="Convert" />  
 				<label><input id="cm" type="number" size="10" onfocus="reset()" /> cm</label>
 			</p>
 		</section>

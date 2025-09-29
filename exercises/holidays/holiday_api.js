@@ -39,12 +39,11 @@ const Holiday = function(date, name, type){
 	}
 }
 
-const url = 'https://holidays-by-api-ninjas.p.rapidapi.com/v1/holidays?country=us&year=2024';
+const url = 'https://api.api-ninjas.com/v1/holidays?country=US';
 const options = {
 	method: 'GET',
 	headers: {
-		'x-rapidapi-key': '52af9ce6b1msh6b20c18c3439862p11a651jsn51cbed85b1d5',
-		'x-rapidapi-host': 'holidays-by-api-ninjas.p.rapidapi.com'
+		'X-Api-Key': '/33SSB7vKksCnbl0C9d4CQ==5R0IoKhKVgAPJLOA',
 	}
 };
 

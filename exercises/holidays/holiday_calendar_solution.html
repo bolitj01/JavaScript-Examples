@@ -46,6 +46,13 @@
             const startDate = document.querySelector("#startDate").value;
             const dateHolidays = holidays.filter(holiday => new Date(holiday.date) >= new Date(startDate));
 
+            //Clear table
+            table.innerHTML = `<tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Type</th>
+            </tr>`;
+
             //Populate table
             for (const holiday of dateHolidays){
                 table.innerHTML += holiday.toString();
