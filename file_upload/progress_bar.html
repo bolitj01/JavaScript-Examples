@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Read Progress</title>
+  <style>
+    #progressContainer {
+      width: 100%;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      height: 25px;
+      margin: 10px 0;
+    }
+    #progressBar {
+      width: 0;
+      height: 100%;
+      background-color: #4caf50;
+      text-align: center;
+      color: white;
+      line-height: 25px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Read File with Progress Bar</h2>
+  <input type="file" id="fileInput"><br>
+
+  <div id="progressContainer">
+    <div id="progressBar">0%</div>
+  </div>
+
+  <pre id="output"></pre>
+
+  <script>
+  const fileInput = document.getElementById("fileInput");
+  const progressBar = document.getElementById("progressBar");
+  const output = document.getElementById("output");
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    let artificialProgress = 0; // Tracks the artificially delayed progress
+
+    // Update progress bar using the onprogress event with artificial delay
+    reader.onprogress = (event) => {
+      if (event.lengthComputable) { // Returns true if the total size is known
+        const realPercent = Math.round((event.loaded / event.total) * 100); // event.total is the file size in bytes
+
+        // Simulate slower progress updates
+        const updateProgress = () => {
+          if (artificialProgress < realPercent) {
+            artificialProgress++;
+            progressBar.style.width = artificialProgress + "%";
+            progressBar.textContent = artificialProgress + "%";
+            // This is not best practice, but simply to simulate a slower progress bar
+            // Remove the callback here and below if you want real-time progress
+            setTimeout(updateProgress, 25); // Delay each increment by 25ms
+          }
+        };
+
+        updateProgress();
+      }
+    };
+
+    // Display the file content once reading is complete
+    reader.onload = () => {
+      const finalizeProgress = () => {
+        progressBar.style.width = "100%";
+        progressBar.textContent = "100%";
+        output.textContent = reader.result.substring(0, 1000) + 
+          (reader.result.length > 1000 ? "\n... [truncated]" : "");
+      };
+
+      // Ensure the progress bar reaches 100% after a slight delay
+      setTimeout(finalizeProgress, 2000);
+      /*
+        This delay is to just simulate a more gradual completion of the progress bar.
+        You wouldn't typically set this timeout, but the file is read so quickly that
+        it may not give any progressing visual effect.
+      */
+    };
+
+    // Read the file as text
+    reader.readAsText(file);
+  });
+  </script>
+</body>
+</html>
